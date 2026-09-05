@@ -2,9 +2,7 @@
 
 End-to-end browser automation for diagnostic laboratory workflows. Two Chrome extensions that handle the entire LIMS data pipeline — from patient intake to diagnostic result entry.
 
-Built for **Glukem Biocare Pvt. Ltd.** and its network of 48 partner diagnostic centers across Telangana.
 
----
 
 ## Modules
 
