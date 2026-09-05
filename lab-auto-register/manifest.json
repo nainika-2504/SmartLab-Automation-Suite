@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Lab Auto Register",
+  "version": "1.0",
+  "description": "Batch patient registration — upload a CSV list and auto-register patients with packages and doctor assignment.",
+  "icons": {
+    "16":  "icons/icon16.png",
+    "48":  "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Lab Auto Register",
+    "default_icon": {
+      "16":  "icons/icon16.png",
+      "48":  "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://skyblue-boar-647070.hostingersite.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}

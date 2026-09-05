@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lab AutoFill</title>
+    <link rel="stylesheet" href="popup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+
+        <div class="header">
+            <h1>Lab AutoFill</h1>
+            <p>Upload a PDF to parse and fill</p>
+        </div>
+
+        <!-- Shown when a PDF is already in memory -->
+        <div id="memory-state" style="display:none;">
+            <div class="memory-banner">
+                📄 <strong id="memory-file-name"></strong>
+            </div>
+            <button id="clear-btn" class="clear-btn">Clear &amp; upload a different PDF</button>
+        </div>
+
+        <!-- Shown when no PDF is loaded -->
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="pdf-upload" accept="application/pdf" />
+            <label for="pdf-upload" class="upload-btn">Choose PDF File</label>
+            <div id="file-name" class="file-name">No file chosen</div>
+        </div>
+
+        <button id="start-btn" class="primary-btn disabled" disabled>Start Autofill</button>
+
+        <div id="status" class="status"></div>
+
+        <!-- Results: only shown after autofill runs -->
+        <div id="results-panel" class="results-panel" style="display:none;">
+
+            <!-- Summary bar: e.g. "Filled 8  •  Check 1  •  Not found 2" -->
+            <div class="results-summary-bar">
+                <span class="summary-chip chip-filled" id="chip-filled"></span>
+                <span class="summary-chip chip-warn"   id="chip-warn" style="display:none;"></span>
+                <span class="summary-chip chip-missed" id="chip-missed" style="display:none;"></span>
+            </div>
+
+            <!-- Warnings (filled but unusual value) -->
+            <div id="section-warnings" style="display:none;">
+                <div class="missed-header">⚠️ Please double-check</div>
+                <div id="list-warnings"></div>
+            </div>
+
+            <!-- Missed (not found at all) -->
+            <div id="section-missed" style="display:none;">
+                <div class="missed-header">❌ Could not fill</div>
+                <div id="list-missed"></div>
+            </div>
+
+            <!-- All good message -->
+            <div id="all-good" class="no-missed" style="display:none;">
+                🎉 All fields filled successfully!
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="pdf.min.js"></script>
+    <script src="pdf.worker.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';</script>
+    <script src="extractor.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>

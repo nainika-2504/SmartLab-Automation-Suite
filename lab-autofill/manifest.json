@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Lab Report AutoFill",
+  "version": "1.2",
+  "description": "Automatically parses PDF lab reports and fills out data entry forms — built for B2B lab operations.",
+  "homepage_url": "https://github.com/nainika-2504/report_autofill",
+  "icons": {
+    "16":  "icons/icon16.png",
+    "48":  "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Lab AutoFill",
+    "default_icon": {
+      "16":  "icons/icon16.png",
+      "48":  "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
