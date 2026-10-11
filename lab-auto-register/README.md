@@ -2,7 +2,7 @@
 
 Batch patient registration tool for diagnostic lab portals. Built as a Chrome extension (Manifest V3) that reads a CSV list of patients and fills out the web-based registration form one-by-one — automatically.
 
-Developed to speed up the daily intake workflow at **Glukem Biocare Pvt. Ltd.** and its partner diagnostic centers across Telangana. Instead of manually entering 30–60 patient records each morning, the front-desk staff uploads a single CSV file and the extension handles the rest.
+Developed to speed up the daily intake workflow across partner diagnostic centers. Instead of manually entering 30–60 patient records each morning, the front-desk staff uploads a single CSV file and the extension handles the rest.
 
 ---
 
@@ -104,9 +104,9 @@ Open the extension popup to configure the batch settings before starting:
 
 | Setting      | Type     | Default                  | Description                                       |
 |--------------|----------|--------------------------|---------------------------------------------------|
-| Lab Name     | Dropdown | Glukem Biocare PVT Limit | 48 partner diagnostic centers available            |
+| Lab Name     | Dropdown | Partner Diagnostic Center | 48 partner diagnostic centers available            |
 | Contract     | Dropdown | MRP                      | Options: MRP, L To L - A, L To L - B, Platinum Card |
-| Package      | Dropdown | Glukem Health Checkup    | 13 test packages (allergy profiles, health checkups, etc.) |
+| Package      | Dropdown | Comprehensive Health Checkup    | 13 test packages (allergy profiles, health checkups, etc.) |
 | Doctor       | Text     | Employee Health Checkup  | Free-text — must match a doctor name in the portal |
 
 Settings are saved to `chrome.storage.local` and persist across sessions.

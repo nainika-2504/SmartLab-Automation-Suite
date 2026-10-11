@@ -1,10 +1,22 @@
-﻿# OS files
+# Operating System Files
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# Editor files
+# IDE & Editor Configurations
 .vscode/
 .idea/
 *.swp
 *.swo
+
+# Environment & Local Configs
+.env
+.env.local
+*.log
+
+# Build & Archives
+node_modules/
+*.zip
+*.tar.gz
+dist/
+build/

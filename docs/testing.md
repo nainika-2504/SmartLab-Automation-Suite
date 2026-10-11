@@ -37,7 +37,7 @@ Verify that the SmartLab Automation Suite accurately executes batch patient regi
 | **TC-1.1** | CSV Upload Parsing | `patients.csv` (82 rows) | Parses rows into valid patient objects | **PASS** |
 | **TC-1.2** | Textarea Manual Entry | `SAROJANA M, 60, F` | Ignores headers, parses fields | **PASS** |
 | **TC-1.3** | Title Inference Rules | Male, Female $\ge 20$, Female $< 20$ | Generates `Mr.`, `Mrs.`, `Miss` | **PASS** |
-| **TC-1.4** | Select2 Dropdown Search | `Glukem Biocare`, `MRP`, `Allergy Profile-B` | Dispatches native DOM events, selects target | **PASS** |
+| **TC-1.4** | Select2 Dropdown Search | `Partner Diagnostic Center`, `MRP`, `Allergy Profile-B` | Dispatches native DOM events, selects target | **PASS** |
 | **TC-1.5** | Patient Modal Submission | `button.add_patient` | Opens modal, fills inputs, clicks Save | **PASS** |
 | **TC-1.6** | Pre-Commit Reload Recovery | Multi-patient queue | Saves status to storage **before** reload; skips retries | **PASS** |
 | **TC-1.7** | Duplicate Name Server Error | Pre-registered patient name | Catches validation error, logs status, advances index | **PASS** |

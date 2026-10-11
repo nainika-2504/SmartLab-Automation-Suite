@@ -27,7 +27,7 @@
   ],
   "content_scripts": [
     {
-      "matches": ["*://skyblue-boar-647070.hostingersite.com/*"],
+      "matches": ["<all_urls>"],
       "js": ["content.js"]
     }
   ]

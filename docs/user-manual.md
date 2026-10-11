@@ -37,9 +37,9 @@
 ```
 +-------------------------------------------------------------+
 | LAB AUTO REGISTER                                           |
-| Lab Name : [ Glukem Biocare PVT Limit             v ]       |
+| Lab Name : [ Partner Diagnostic Center             v ]       |
 | Contract : [ MRP                                  v ]       |
-| Package  : [ Glukem Health Checkup                v ]       |
+| Package  : [ Comprehensive Health Checkup                v ]       |
 | Doctor   : [ Employee Health Checkup               ]        |
 |                                                             |
 | [ Choose CSV File ]   OR   Paste text below:                |
@@ -58,7 +58,7 @@
 3. Select your batch presets:
    - **Lab Name**: Choose from 48 diagnostic center locations.
    - **Contract**: Select `MRP`, `L To L - A`, `L To L - B`, or `Platinum Card`.
-   - **Package**: Select your test profile (e.g. *Glukem Health Checkup*, *Allergy Profiles*).
+   - **Package**: Select your test profile (e.g. *Comprehensive Health Checkup*, *Allergy Profiles*).
    - **Doctor**: Confirm supervising doctor name.
 4. Supply your patient list:
    - Click **Choose CSV File** to upload a `.csv` / `.txt` file, OR

@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════════════════════
 // Lab Auto Register — Content Script v2
-// Runs on: https://skyblue-boar-647070.hostingersite.com/*
+// Target: LIMS Web Portal Intake Page
 // Uses PURE DOM clicks on Select2 UI elements — no jQuery needed
 // ═══════════════════════════════════════════════════════════════════════════
 

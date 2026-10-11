@@ -72,11 +72,17 @@ SmartLab-Automation-Suite/
 │   ├── pdf.min.js           # Mozilla PDF.js (bundled)
 │   └── icons/
 │
+├── tests/                   # Parameter matching & collision guard test suites
+│   ├── test_lipid_bilirubin.js
+│   ├── test_thyroid.js
+│   └── test_esr_rdw.js
+│
 ├── docs/                    # Project documentation
 │   ├── architecture.md      # System design & data flow
 │   ├── developer-guide.md   # Code reference & function docs
 │   ├── user-manual.md       # Step-by-step usage guide
-│   └── testing.md           # Test plan & QA report
+│   ├── testing.md           # Test plan & QA report
+│   └── store-listing.md     # Web Store listing metadata
 │
 └── README.md
 ```

@@ -115,9 +115,9 @@ The **SmartLab Automation Suite** is designed around a **Modular Dual-Extension 
     ],
     "currentIndex": 1,
     "settings": {
-      "labName": "Glukem Biocare PVT Limit",
+      "labName": "Partner Diagnostic Center",
       "contract": "MRP",
-      "packageName": "Glukem Health Checkup",
+      "packageName": "Comprehensive Health Checkup",
       "doctorName": "Employee Health Checkup"
     },
     "results": [
