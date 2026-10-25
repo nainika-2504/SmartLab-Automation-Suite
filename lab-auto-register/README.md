@@ -104,10 +104,10 @@ Open the extension popup to configure the batch settings before starting:
 
 | Setting      | Type     | Default                  | Description                                       |
 |--------------|----------|--------------------------|---------------------------------------------------|
-| Lab Name     | Dropdown | Partner Diagnostic Center | 48 partner diagnostic centers available            |
+| Lab Name     | Dropdown | Partner Diagnostic Center | 49 partner diagnostic centers available            |
 | Contract     | Dropdown | MRP                      | Options: MRP, L To L - A, L To L - B, Platinum Card |
-| Package      | Dropdown | Comprehensive Health Checkup    | 13 test packages (allergy profiles, health checkups, etc.) |
-| Doctor       | Text     | Employee Health Checkup  | Free-text — must match a doctor name in the portal |
+| Package      | Dropdown | Comprehensive Health Checkup    | 14 test packages (allergy profiles, health checkups, etc.) |
+| Doctor       | Dropdown | Employee Health Checkup  | Options: Employee Health Checkup, Self             |
 
 Settings are saved to `chrome.storage.local` and persist across sessions.
 

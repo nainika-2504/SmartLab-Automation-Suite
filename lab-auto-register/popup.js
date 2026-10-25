@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     settingPackage.addEventListener('change', () => {
         chrome.storage.local.set({ reg_package: settingPackage.value });
     });
-    settingDoctor.addEventListener('input', () => {
+    settingDoctor.addEventListener('change', () => {
         chrome.storage.local.set({ reg_doctor: settingDoctor.value });
     });
 
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Parse CSV text into patient objects ──
     function parsePatients() {
-        const text = csvText.value.trim();
+        let text = csvText.value.trim();
         if (!text) {
             patients = [];
             previewPanel.style.display = 'none';
@@ -88,18 +88,25 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Strip UTF-8 BOM if present
+        if (text.charCodeAt(0) === 0xFEFF) {
+            text = text.slice(1).trim();
+        }
+
         const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
         patients = [];
 
         for (const line of lines) {
+            const cleanLine = line.replace(/^\uFEFF/, '').trim();
             // Skip header row
-            if (line.toLowerCase().startsWith('name')) continue;
+            if (cleanLine.toLowerCase().startsWith('name') || cleanLine.toLowerCase().startsWith('patient')) continue;
 
-            const parts = line.split(',').map(p => p.trim());
+            const parts = cleanLine.split(',').map(p => p.trim());
             if (parts.length < 2) continue;
 
             const name = parts[0].toUpperCase();
             const age = parseInt(parts[1], 10);
+            if (isNaN(age)) continue; // Skip header lines like "Name, Age, Gender"
             const genderRaw = (parts[2] || 'F').toUpperCase().trim();
             const gender = genderRaw.startsWith('M') ? 'Male' : 'Female';
 

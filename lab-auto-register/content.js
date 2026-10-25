@@ -7,6 +7,13 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === 'START_QUEUE') {
         console.log('[AutoReg] START_QUEUE received');
+        // Ensure on create page BEFORE running queue
+        if (!window.location.href.includes('/admin/groups/create')) {
+            console.log('[AutoReg] Not on create page. Redirecting to /admin/groups/create...');
+            window.location.href = window.location.origin + '/admin/groups/create';
+            sendResponse({ status: "redirecting" });
+            return;
+        }
         runQueue();
         sendResponse({ status: "started" });
     }
@@ -37,6 +44,13 @@ async function runQueue() {
     try {
         const result = await chromeStorageGet('reg_status');
         if (!result || !result.isRunning) return;
+
+        // Pre-flight check: Must be on the registration create page
+        if (!window.location.href.includes('/admin/groups/create')) {
+            console.log('[AutoReg] Current URL is not /admin/groups/create. Redirecting before processing...');
+            window.location.href = window.location.origin + '/admin/groups/create';
+            return; // Preserves current patient index in storage, will auto-resume on load
+        }
 
         const status = result;
         const i = status.currentIndex;
@@ -102,17 +116,37 @@ async function registerPatient(patient, settings, currentStatus, patientIndex) {
     console.log(`[AutoReg] ▶ Starting: ${patient.name}`);
 
     // Wait for the page to be fully ready (Not Listed button must exist)
-    await waitForElement('button.add_patient', 8000);
-    await sleep(500);
+    await waitForElement('button.add_patient', 10000);
+    await sleep(600);
 
     // Step 1: Click "Not Listed" to open Create Patient modal
     const notListedBtn = document.querySelector('button.add_patient');
     if (!notListedBtn) throw new Error('Cannot find "Not Listed" button');
+    notListedBtn.scrollIntoView({ behavior: 'instant', block: 'center' });
+    await sleep(200);
     notListedBtn.click();
     console.log('[AutoReg] Clicked "Not Listed"');
 
-    // Wait for modal
-    await waitForElement('.modal.show, .modal.in, .modal[style*="display: block"]', 5000);
+    // Wait for modal with retry in case initial event binding was delayed
+    let modalEl = null;
+    for (let attempt = 1; attempt <= 3; attempt++) {
+        try {
+            await waitForElement('.modal.show, .modal.in, .modal[style*="display: block"]', 2500);
+            modalEl = document.querySelector('.modal.show, .modal.in, .modal[style*="display: block"]');
+            if (modalEl) break;
+        } catch {
+            if (attempt < 3) {
+                console.warn(`[AutoReg] Modal not visible after attempt ${attempt}, re-clicking Not Listed button...`);
+                notListedBtn.click();
+                notListedBtn.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+                await sleep(500);
+            }
+        }
+    }
+    if (!modalEl) {
+        modalEl = document.querySelector('.modal.show, .modal.in, .modal[style*="display: block"]');
+        if (!modalEl) throw new Error('Timed out waiting for Create Patient modal to open');
+    }
     await sleep(600);
 
     // Step 2: Fill form fields
